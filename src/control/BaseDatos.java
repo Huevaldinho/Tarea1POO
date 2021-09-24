@@ -13,11 +13,11 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import vista.pruebaUI;
+import vista.Ventana_Principal;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -237,6 +237,9 @@ public class BaseDatos {
         }else{//Se cargó el excel
             System.out.println("Ya cargó los datos supuestamente");
         }
-        pruebaUI interfaz = new pruebaUI();
+
+        // creacion ventana principal
+        JFrame interfaz = new Ventana_Principal();
+        interfaz.setVisible(true);
     }
 }

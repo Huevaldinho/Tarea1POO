@@ -21,6 +21,7 @@ public class Sismo {
     private int lugarOrigen; // 1 -> TIERRA | 2 -> MAR
     //Constructores
     public Sismo(){}
+
     public Sismo(Date _fecha,
           Date _instanteExacto,
           double _profundidad,

@@ -1,6 +1,7 @@
 package vista;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class Mostrar_Sismos extends JFrame {
     private JPanel panel;
@@ -10,4 +11,5 @@ public class Mostrar_Sismos extends JFrame {
         setContentPane(panel);
         this.pack();
     }
+
 }

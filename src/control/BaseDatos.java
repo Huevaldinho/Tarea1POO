@@ -48,6 +48,11 @@ public class BaseDatos {
         this.sismos = sismos;
     }
     //toString
+
+    /**
+     *
+     * @return retorna toda la informacion
+     */
     public String toString(){
         StringBuilder text = new StringBuilder("Sismos:\n");
         for (Sismo i : sismos){
@@ -228,6 +233,7 @@ public class BaseDatos {
             System.out.println(e.getMessage());
             return false;
         }
+        //agregar enviar codigo enviar correo
         return true;
     }
     public Sismo consultarSismo(Date fecha, Date instanteExacto){
@@ -246,15 +252,20 @@ public class BaseDatos {
         DateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
         System.out.println("Hay "+sismos.size()+" sismos registrados.");
         int index=0;
+        boolean encontro=false;
         for (Sismo actual : sismos){//Revisa si ya está registrado
             index++;
             if (formatoHora.format(actual.getInstanteExacto()).equals(formatoHora.format(nuevoInstante))){
                 System.out.println("Son iguales jaja xd");
                 actual.setProvincia(nuevaProvincia);
                 actual.setLocalizacionDescripcion(nuevaLocalizacion);
+                encontro=true;
                 break;
             }
-        }
+        }//falta agregar fecha
+        if (encontro==false)
+            return false;
+
         System.out.println("Cambio en sismos: " +sismos.get(index-1).getLocalizacionDescripcion()+" en RAM esta en el indice: "+(index-1) );
         String nombreArchivo =  "Excel/baseDatosSismos.xlsx";
         //hay una diferencia de dos numeros en el indice del excel
@@ -311,6 +322,7 @@ public class BaseDatos {
 
     public static void main(String[] args) throws IOException, ParseException {
         if (cargarExcelSismos()==false){
+            //alerta para que cierre el excel
             crearExcelSismos();
         }else{//Se cargó el excel
             System.out.println("Carga datos");

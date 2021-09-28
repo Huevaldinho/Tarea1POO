@@ -4,14 +4,26 @@ import modelo.TOrigen;
 
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
+import control.Cargador;
+import control.BaseDatos;
 public class controlador {
+    private Cargador cargador = new Cargador();
+    private BaseDatos BD;  // asociación comunicación entre el controlador y el admClientes
 
-    private BaseDatos BD = new BaseDatos();  // asociación comunicación entre el controlador y el admClientes
-
+    public controlador() throws IOException, ParseException {
+        BD = new BaseDatos();
+        ArrayList<Sismo> arrayTmp= cargador.cargarExcelSismos();
+        if (arrayTmp.isEmpty())
+            cargador.crearExcelSismos();
+        else{
+            BD.setSismos(arrayTmp);
+        }
+    }
     public boolean agregarSismo(Date fecha, Date hora,double profundidad,double  magnitud,TOrigen origen, int provincia,
                                 double latitud,double longitud,String localzacion,int lugarOrigen) throws IOException {
         //Falta validar fechas y horas

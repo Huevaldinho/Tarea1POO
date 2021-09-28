@@ -29,7 +29,7 @@ import java.util.Iterator;
 
 public class BaseDatos {
     //Atributos
-    static XSSFRow row;
+
     private static ArrayList<Sismo> sismos = new ArrayList();
     private ArrayList<Persona> personas;
     //Constructor
@@ -66,123 +66,8 @@ public class BaseDatos {
     }
 
     //Métodos
-    public static void crearExcelSismos(){
-        System.out.println("Función de crear excel si no carga la base de datos");
 
 
-    }
-    public static boolean cargarExcelSismos() throws IOException, ParseException {//se esta cargando mal en ram
-        //Trae archivo excel
-        FileInputStream fis=null;
-        try {
-            fis = new FileInputStream(new File("Excel/baseDatosSismos.xlsx"));
-        } catch (Exception IOException) {
-            System.out.println("ERROR al cargar excel de sismos");
-            return false;
-        }
-        //Instancia el archivo
-        XSSFWorkbook workbook = new XSSFWorkbook(fis);//
-        //Se posiciona en la primera hoja
-        XSSFSheet spreadsheet = workbook.getSheetAt(0);
-        //Iterador de filas para avanzar en la hoja
-        Iterator<Row> rowIterator = spreadsheet.iterator();
-
-        //Recorre todas las filas
-
-        int cantidadFilas = spreadsheet.getLastRowNum();
-        System.out.println("Cantidad de sismo: " +cantidadFilas);
-        int i=0;
-        DateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-        DateFormat formatoInstanteExacto = new SimpleDateFormat("hh:mm:ss");
-        while (i<cantidadFilas+1) {//el primero no se cuenta
-            row = (XSSFRow) spreadsheet.getRow(i);
-            i++;
-            //row = (XSSFRow) rowIterator.next();
-            //Iterador para recorrer las celdas de la fila
-            Iterator < Cell >  cellIterator = row.cellIterator();
-            //Si es la primera fila se la salta para que no de errores a la hora de crear los objetos
-            if (row.getRowNum()==0)
-                continue;
-
-            //Recorre todas las celdas. A partir de aqui se tiene que crear los objetos
-            Sismo actual = new Sismo();
-            for (int j=0;j<10;j++) {
-                Cell cell = row.getCell(j);
-                switch (j){
-                    case 0:{//Fecha
-                        String sDate1=cell.getStringCellValue();
-                        Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);
-                        actual.setFecha(date1);//Esta fecha tiene una hora pero no se utiliza
-                        System.out.println("\nFecha" +actual.getFecha());
-                        break;
-                    }
-                    case 1:{//Hora
-                        String shora=cell.getStringCellValue();
-                        Date hora=new SimpleDateFormat("HH:mm:ss").parse(shora);
-                        actual.setInstanteExacto(hora);
-                        System.out.println("Hora: "+actual.getInstanteExacto());
-                        break;
-                    }
-                    case 2:{//Profundidad
-                        actual.setProfundidad(cell.getNumericCellValue());
-                        System.out.println("Profundidad: "+actual.getProfundidad());
-                        break;
-                    }
-                    case 3:{//Magitud
-                        actual.setMagnitud(cell.getNumericCellValue());
-                        System.out.println("Magnitud: "+actual.getMagnitud());
-                        break;
-                    }
-                    case 4:{//Origen //Enum
-                        String origen = cell.getStringCellValue();
-                        if(origen.equals("Subducción")){
-                            actual.setOrigen(TOrigen.Subduccion);
-                        }else if(origen.equals("Tectónico por falla local")){
-                            actual.setOrigen(TOrigen.TectonicoPorFallaLocal);
-                        }else if(origen.equals("Intra placa")){
-                            actual.setOrigen(TOrigen.IntraPlaca);
-                        }else if(origen.equals("Deformación Interna")){
-                            actual.setOrigen(TOrigen.DeformacionInterna);
-                        }else if(origen.equals("Choque de placas")){
-                            actual.setOrigen(TOrigen.ChoqueDePlacas);
-                        }
-                        System.out.println(actual.getOrigen());
-                        break;
-                    }
-                    case 5:{//Provincia
-                        actual.setProvincia((int) cell.getNumericCellValue());
-                        System.out.println("Provincia:"+actual.getProvincia());
-                        break;
-                    }
-                    case 6:{//Latitud
-                        actual.setLocalizacionLatitud(cell.getNumericCellValue());
-                        System.out.println("Latitud "+actual.getLocalizacionLatitud());
-                        break;
-                    }
-                    case 7:{//Longitud
-                        actual.setLocalizacionLongitud(cell.getNumericCellValue());
-                        System.out.println("Longitud: "+actual.getLocalizacionLongitud());
-                        break;
-                    }
-                    case 8:{//Origen
-                        actual.setLugarOrigen((int) cell.getNumericCellValue());
-                        System.out.println("Lugar origen  (tierra o mar):"+actual.getLugarOrigen() );
-                        break;
-                    }
-                    case 9:{//Descripcion
-                        actual.setLocalizacionDescripcion(cell.getStringCellValue());
-                        System.out.println("Descripcion localizacion: "+actual.getLocalizacionDescripcion());
-                        break;
-                    }
-                }
-            }
-            sismos.add(actual);
-            System.out.println(formatoFecha.format(actual.getFecha()));
-        }
-        System.out.println("Se cargaron: "+sismos.size()+" del archivo de excel.");
-        fis.close();
-        return true;
-    }
     public boolean annadirSismo(Sismo nuevoSismo) throws IOException {
         for (Sismo i : sismos){//Revisa si ya está registrado
             if (i.equals(nuevoSismo))
@@ -320,16 +205,5 @@ public class BaseDatos {
         return personas.remove(personaEliminar);
     }
 
-    public static void main(String[] args) throws IOException, ParseException {
-        if (cargarExcelSismos()==false){
-            //alerta para que cierre el excel
-            crearExcelSismos();
-        }else{//Se cargó el excel
-            System.out.println("Carga datos");
-        }
 
-        // creacion ventana principal
-        JFrame interfaz = new Ventana_Principal();
-        interfaz.setVisible(true);
-    }
 }

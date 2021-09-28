@@ -25,13 +25,14 @@ public class Anadir_Sismo extends JFrame {
     private JTextField textoLatitud;
     private JTextField textoLongitud;
     private JComboBox comboboxOrigen;
-    private controlador control = new controlador();
+    private controlador control;
 
-    Anadir_Sismo() {
+    Anadir_Sismo() {    }
+    Anadir_Sismo(controlador control) {
         super("Añadir Sismo");
         setContentPane(panel);
         this.pack();
-
+        this.control = control;
         anadirButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 try {

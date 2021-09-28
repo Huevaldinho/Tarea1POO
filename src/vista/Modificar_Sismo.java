@@ -14,12 +14,14 @@ public class Modificar_Sismo extends JFrame {
     private JTextField textoNuevaLocalizacion;
     private JTextField txtInstanteExacto;
     private JButton btnModificar;
-    private controlador control = new controlador();
+    private controlador control;
 
-    Modificar_Sismo() {
+    Modificar_Sismo() {    }
+    Modificar_Sismo(controlador control) {
         super("Modificar Sismo");
         setContentPane(panel);
         this.pack();
+        this.control=control;
 
 
         btnModificar.addActionListener(new ActionListener(){

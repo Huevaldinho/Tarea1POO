@@ -31,8 +31,10 @@ public class Anadir_Sismo extends JFrame {
     Anadir_Sismo(controlador control) {
         super("Añadir Sismo");
         setContentPane(panel);
+        setResizable(false);
         this.pack();
         this.control = control;
+
         anadirButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 try {

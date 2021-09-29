@@ -8,6 +8,7 @@ public class Sobre_Nosotros extends JFrame {
     Sobre_Nosotros() {
         super("Sobre Nosotros");
         setContentPane(sobreNosotrosPanel);
+        setResizable(false);
         this.pack();
     }
 }

@@ -6,6 +6,7 @@
 package control;
 
 import jdk.swing.interop.SwingInterOpUtils;
+import modelo.Enviar_Correo;
 import modelo.Persona;
 import modelo.Sismo;
 import modelo.TOrigen;
@@ -31,7 +32,7 @@ public class BaseDatos {
     //Atributos
 
     private static ArrayList<Sismo> sismos = new ArrayList();
-    private ArrayList<Persona> personas;
+    private ArrayList<Persona> personas = new ArrayList();
     //Constructor
     public BaseDatos() {}
     //Set y get
@@ -118,7 +119,7 @@ public class BaseDatos {
             System.out.println(e.getMessage());
             return false;
         }
-        //agregar enviar codigo enviar correo
+        Enviar_Correo.enviarCorreo(personas, nuevoSismo);
         return true;
     }
     public Sismo consultarSismo(Date fecha, Date instanteExacto){
@@ -175,11 +176,13 @@ public class BaseDatos {
     public boolean eliminarSismo (Sismo sismoEliminar){
         return sismos.remove(sismoEliminar);
     }
+
     public boolean annadirPersona(Persona nuevaPersona) {
         for (Persona i : personas){
             if (i.equals(nuevaPersona))
                 return false;
         }
+        System.out.println(nuevaPersona);
         return personas.add(nuevaPersona);
     }
     public Persona consultarPersona(String nombrePersona){

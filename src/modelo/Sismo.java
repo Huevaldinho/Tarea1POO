@@ -104,6 +104,80 @@ public class Sismo {
     public void setProvincia(int provincia) {
         this.provincia = provincia;
     }
+
+    // metodos para convertir enums
+    public String convertirOrigen(Sismo sismo) {
+        String origen;
+        switch (sismo.getOrigen()) {
+            case Subduccion: {
+                origen = "Subducción";
+                return origen;
+            }
+            case ChoqueDePlacas: {
+                origen = "Choque De Placas";
+                return origen;
+            }
+            case TectonicoPorFallaLocal: {
+                origen = "Tectónico Por Falla Local";
+                return origen;
+            }
+            case IntraPlaca: {
+                origen = "Intra Placa";
+                return origen;
+            }
+            default: {
+                origen = "Deformación Interna";
+                return origen;
+            }
+        }
+    }
+    public String convertirProvincia(Sismo sismo) {
+        String provincia;
+        switch (sismo.getProvincia()) {
+            case 1: {
+                provincia = "San José";
+                return provincia;
+            }
+            case 2: {
+                provincia = "Alajuela";
+                return provincia;
+            }
+            case 3: {
+                provincia = "Cartago";
+                return provincia;
+            }
+            case 4: {
+                provincia = "Heredia";
+                return provincia;
+            }
+            case 5: {
+                provincia = "Guanacaste";
+                return provincia;
+            }
+            case 6: {
+                provincia = "Puntarenas";
+                return provincia;
+            }
+            default: {
+                provincia = "Limón";
+                return provincia;
+            }
+        }
+    }
+    public String convertirLugarOrigen(Sismo sismo) {
+        String lugarOrigen;
+        switch (sismo.getLugarOrigen()) {
+            case 1: {
+                lugarOrigen = "Tierra";
+                return lugarOrigen;
+            }
+            default: {
+                lugarOrigen = "Mar";
+                return lugarOrigen;
+            }
+        }
+    }
+
     //toString
     @Override
     public String toString() {

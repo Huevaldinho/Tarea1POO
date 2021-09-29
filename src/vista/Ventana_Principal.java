@@ -24,6 +24,7 @@ public class Ventana_Principal extends JFrame {
     public Ventana_Principal() {
         super("Sismos En Costa Rica");
         setContentPane(principalPanel);
+        setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
 
@@ -38,15 +39,14 @@ public class Ventana_Principal extends JFrame {
         reportesDeSismosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame panelReporteSismos = new Reportes_Sismos();
+                JFrame panelReporteSismos = new Reportes_Sismos(control);
                 panelReporteSismos.setVisible(true);
             }
         });
         añadirPersonaParaSerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame panelAnadirPersona = new Anadir_Persona();
-                panelAnadirPersona.setSize(400, 300);
+                JFrame panelAnadirPersona = new Anadir_Persona(control);
                 panelAnadirPersona.setVisible(true);
             }
         });
@@ -58,8 +58,9 @@ public class Ventana_Principal extends JFrame {
             }
         });
     }
+
     public static void main(String[] args) throws IOException, ParseException {
-        control=new controlador();
+        control = new controlador();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Ventana_Principal().setVisible(true);

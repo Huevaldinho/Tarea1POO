@@ -1,24 +1,18 @@
 package modelo;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 
 public class Enviar_Correo {
-    private static String to;
-    private static final String from = "ejemplo@gmail.com"; // establecer de donde se va a enviar (debe ser gmail)
-    private static final String contrasena = "contrasena"; // establecer contrasena del correo from
+    private static final String from = "plataformasismospoo"; // establecer de donde se va a enviar (debe ser gmail)
+    private static final String contrasena = "contrasenaCorreo"; // establecer contrasena del correo from
 
-    public Enviar_Correo(){}
+    public Enviar_Correo() {}
 
-    public String getCorreoElectronicoTo() {
-        return this.to;
-    }
-    public void setCorreoElectronicoTo(String correoElectronico) {
-        this.to = correoElectronico;
-    }
-
-    public static void enviarCorreo() {
+    public static void enviarCorreo(ArrayList<Persona> listaPersonas, Sismo sismo) {
         // se establece el smtp de gmail
         Properties propiedades = System.getProperties();
         propiedades.setProperty("mail.smtp.host", "smtp.gmail.com");
@@ -31,14 +25,56 @@ public class Enviar_Correo {
             // composicion de mensaje
             MimeMessage mensaje = new MimeMessage(sesion);
             mensaje.setFrom(new InternetAddress(from));
-            mensaje.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-            mensaje.setSubject("Prueba");
-            mensaje.setText("Esto es una prueba desde Java");
+
+            // anade las personas interesadas para ser notificadas
+            boolean bandera = false;
+            for (Persona i : listaPersonas) {
+                for (NProvincia j : i.getProvinciasInteres()) {
+                    int temp;
+                    switch (j) {
+                        case SanJose -> temp = 1;
+                        case Alajuela -> temp = 2;
+                        case Cartago -> temp = 3;
+                        case Heredia -> temp = 4;
+                        case Guancaste -> temp = 5;
+                        case Puntarenas -> temp = 6;
+                        default -> temp = 7;
+                    }
+                    if (sismo.getProvincia() == temp) {
+                        mensaje.addRecipient(Message.RecipientType.CC, new InternetAddress(i.getCorreoElectronico()));
+                        bandera = true;
+                        break;
+                    }
+                }
+            }
+            if (!bandera) {
+                return;
+            }
+            // prepara enums en Strings
+            String lugarOrigen = sismo.convertirLugarOrigen(sismo);
+            String origen = sismo.convertirOrigen(sismo);
+            String provincia = sismo.convertirProvincia(sismo);
+
+            DateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+            DateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
+
+            // prepara mensaje a enviar
+            mensaje.setSubject("Nuevo Sismo en " + provincia);
+            mensaje.setText("Fecha: " + formatoFecha.format(sismo.getFecha()) + "\n"
+                    + "Instante Exacto: " + formatoHora.format(sismo.getInstanteExacto()) + "\n"
+                    + "Provincia: " + provincia + "\n"
+                    + "Latitud: " + sismo.getLocalizacionLatitud() + "\n"
+                    + "Longitud: " + sismo.getLocalizacionLongitud() + "\n"
+                    + "Localizacion: " + sismo.getLocalizacionDescripcion() + "\n"
+                    + "Magnitud: " + sismo.getMagnitud() + "\n"
+                    + "Profundidad Del Sismo: " + sismo.getProfundidad() + " km\n"
+                    + "Origen: " + origen + "\n"
+                    + "Lugar De Origen: " + lugarOrigen);
 
             // preparacion y envio de mensaje
             Transport transporte = sesion.getTransport("smtp");
             transporte.connect(from, contrasena);
-            transporte.sendMessage(mensaje, mensaje.getRecipients(Message.RecipientType.TO));
+            transporte.sendMessage(mensaje, mensaje.getRecipients(Message.RecipientType.CC));
             transporte.close();
             System.out.println("El correo se envio");
         } catch (MessagingException mex) {mex.printStackTrace();}

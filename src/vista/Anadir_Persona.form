@@ -115,6 +115,7 @@
           <foreground color="-13619152"/>
           <horizontalAlignment value="0"/>
           <opaque value="true"/>
+          <text value="####-####"/>
         </properties>
       </component>
       <component id="a7926" class="javax.swing.JCheckBox" binding="guanacasteCheckBox" default-binding="true">

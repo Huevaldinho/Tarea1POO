@@ -20,9 +20,9 @@ public class Modificar_Sismo extends JFrame {
     Modificar_Sismo(controlador control) {
         super("Modificar Sismo");
         setContentPane(panel);
+        setResizable(false);
         this.pack();
         this.control=control;
-
 
         btnModificar.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){

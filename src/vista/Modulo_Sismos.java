@@ -12,9 +12,11 @@ public class Modulo_Sismos extends JFrame {
     private JButton anadirSismosButton;
     private JButton modificarSismoButton;
     private static controlador control;
+
     public Modulo_Sismos(controlador control) {
         super("Modulo de Sismos");
         setContentPane(sismosPanel);
+        setResizable(false);
         this.pack();
         mostrarSismosButton.addActionListener(new ActionListener() {
             @Override

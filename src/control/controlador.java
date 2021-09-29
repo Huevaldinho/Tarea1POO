@@ -1,4 +1,6 @@
 package control;
+import modelo.NProvincia;
+import modelo.Persona;
 import modelo.Sismo;
 import modelo.TOrigen;
 
@@ -11,9 +13,13 @@ import java.util.Calendar;
 import java.util.Date;
 import control.Cargador;
 import control.BaseDatos;
+
+import javax.swing.*;
+
 public class controlador {
     private Cargador cargador = new Cargador();
     private BaseDatos BD;  // asociación comunicación entre el controlador y el admClientes
+    private Expresiones_Regulares expresionesRegulares = new Expresiones_Regulares();
 
     public controlador() throws IOException, ParseException {
         BD = new BaseDatos();
@@ -47,6 +53,62 @@ public class controlador {
         //fechaYHoraPrueba.set(2001,9,31,05,30,00);
         //System.out.println(fechaYHoraPrueba.getTime());
         return BD.modificarSismo(hora,provinciaNueva,localizacion);
+    }
+
+    public boolean agregarPersona(String nombre, String correoElectronico, String numeroTelefono, ArrayList<NProvincia> lista) {
+        if (nombre.equals("")) {
+            JOptionPane.showMessageDialog(null, "Ingrese un nombre");
+            return false;
+        }
+        else if (correoElectronico.equals("")) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar un correo electronico");
+            return false;
+        }
+        else if (numeroTelefono.equals("")) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar un numero de telefono");
+            return false;
+        }
+        else if (lista.size() == 0) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar al menos una provincia");
+            return false;
+        }
+        else if (expresionesRegulares.verificarCorreoElectronico(correoElectronico)) {
+            if (expresionesRegulares.verificarNumeroTelefono(numeroTelefono)) {
+                Persona nuevaPersona = new Persona(nombre, correoElectronico, numeroTelefono, lista);
+                return BD.annadirPersona(nuevaPersona);
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "El formato del número de teléfono es incorrecto");
+                return false;
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "El formato del correo electronico es incorrecto");
+            return false;
+        }
+    }
+
+    public boolean agregarPersona(String nombre, String correoElectronico, ArrayList<NProvincia> lista) {
+        if (nombre.equals("")) {
+            JOptionPane.showMessageDialog(null, "Ingrese un nombre");
+            return false;
+        }
+        else if (correoElectronico.equals("")) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar un correo electronico");
+            return false;
+        }
+        else if (lista.size() == 0) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar al menos una provincia");
+            return false;
+        }
+        else if (expresionesRegulares.verificarCorreoElectronico(correoElectronico)) {
+            Persona nuevaPersona = new Persona(nombre, correoElectronico, lista);
+            return BD.annadirPersona(nuevaPersona);
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "El formato del correo electronico es incorrecto");
+            return false;
+        }
     }
 }
 

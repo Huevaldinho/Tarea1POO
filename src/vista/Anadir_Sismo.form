@@ -33,7 +33,7 @@
           <font name="Roboto Light" size="12"/>
           <foreground color="-13619152"/>
           <horizontalAlignment value="0"/>
-          <text value=""/>
+          <text value="dd/MM/yyyy"/>
         </properties>
       </component>
       <component id="a9ad7" class="javax.swing.JLabel">
@@ -57,7 +57,7 @@
           <font name="Roboto Light" size="12"/>
           <foreground color="-13619152"/>
           <horizontalAlignment value="0"/>
-          <text value=""/>
+          <text value="HH:mm:ss"/>
         </properties>
       </component>
       <component id="44176" class="javax.swing.JLabel">

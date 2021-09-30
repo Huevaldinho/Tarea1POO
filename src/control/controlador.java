@@ -9,10 +9,12 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import control.Cargador;
 import control.BaseDatos;
+import org.apache.poi.hpsf.Array;
 
 import javax.swing.*;
 
@@ -109,6 +111,14 @@ public class controlador {
             JOptionPane.showMessageDialog(null, "El formato del correo electronico es incorrecto");
             return false;
         }
+    }
+    public ArrayList<Integer> reporteProvincias()throws IOException, ParseException {
+        ArrayList<Sismo> sismos= cargador.cargarExcelSismos();
+        ArrayList<Integer>datos=new ArrayList();
+        for (Sismo i : sismos){
+            datos.add(i.getProvincia());
+        }
+        return datos;
     }
 }
 

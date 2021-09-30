@@ -2,6 +2,8 @@
   <library name="Librerias Externas">
     <CLASSES>
       <root url="file://$PROJECT_DIR$/Librerias Externas" />
+      <root url="jar://$USER_HOME$/OneDrive - Estudiantes ITCR/POO/charts/lib/jcommon-1.0.23.jar!/" />
+      <root url="jar://$USER_HOME$/OneDrive - Estudiantes ITCR/POO/charts/lib/jfreechart-1.0.19.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

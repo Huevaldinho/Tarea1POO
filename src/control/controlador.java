@@ -119,14 +119,57 @@ public class controlador {
             return false;
         }
     }
-    public ArrayList<Integer> reporteProvincias()throws IOException, ParseException {
+    public double[] reporteProvincias()throws IOException, ParseException {
         ArrayList<Sismo> sismos= cargador.cargarExcelSismos();
-        ArrayList<Integer>datos=new ArrayList();
+        int cantidadSismos=0;
         for (Sismo i : sismos){
-            datos.add(i.getProvincia());
+            cantidadSismos++;
+        }
+        double datos[]=new double[cantidadSismos];
+        int cnt=0;
+        for (Sismo i : sismos){
+            datos[cnt]=(i.getProvincia());
+            cnt++;
         }
         return datos;
     }
     public DefaultTableModel cargarSismosTabla(){return cargador.cargarClientes(BD.getSismos());}
+    public double[] reporteTipoOrigen()throws IOException, ParseException {
+        ArrayList<Sismo> sismos= cargador.cargarExcelSismos();
+        int cantidadSismos=0;
+        for (Sismo i : sismos){
+            cantidadSismos++;
+        }
+        //int sb,cp,tpf,ip,di=0; <-- si lo declaro asi no me deja :( java odioso
+        int sb=0;
+        int cp=0;
+        int tpf=0;
+        int ip=0;
+        int di=0;
+        for (Sismo i : sismos){
+            TOrigen opcion = i.getOrigen();
+            switch (opcion){
+                case Subduccion ->{
+                    sb++;break;
+                }
+                case ChoqueDePlacas -> {
+                    cp++;break;
+                }
+                case TectonicoPorFallaLocal -> {
+                    tpf++;break;
+                }
+                case IntraPlaca -> {
+                    ip++;break;
+                }
+                case DeformacionInterna -> {
+                    di++;break;
+                }
+            }
+        }
+        double datos[]=new double[5];
+        datos[0]=(sb*100)/cantidadSismos;datos[1]=(cp*100)/cantidadSismos;datos[2]=(tpf*100)/cantidadSismos;datos[3]=(ip*100)/cantidadSismos;datos[4]=(di*100)/cantidadSismos;
+        return datos;
+
+    }
 }
 

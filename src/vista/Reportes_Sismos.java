@@ -1,10 +1,12 @@
 package vista;
 
 import control.controlador;
+import org.jfree.ui.RefineryUtilities;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class Reportes_Sismos extends JFrame {
     private JButton reportePorProvinciaButton;
@@ -25,15 +27,20 @@ public class Reportes_Sismos extends JFrame {
         reportePorProvinciaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame panelReporteProvincia = new Reporte_Provincia(control);
-                panelReporteProvincia.setVisible(true);
+                Histograma histo = new Histograma("Reporte de Sismos por Provincias",control);
+                histo.pack();
+                histo.setSize(315,575);
+                RefineryUtilities.centerFrameOnScreen(histo);
+                histo.setVisible(true);
             }
         });
         reportePorOrigenButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                JFrame panelReporteOrigen = new Reporte_Origen(control);
-                panelReporteOrigen.setVisible(true);
+            public void actionPerformed(ActionEvent e){
+                PieChart demo = new PieChart( "Reporte de Sismos por Origen",control );
+                demo.setSize( 560 , 367 );
+                RefineryUtilities.centerFrameOnScreen( demo );
+                demo.setVisible( true );
             }
         });
         reportePorFechasButton.addActionListener(new ActionListener() {

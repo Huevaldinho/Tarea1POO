@@ -8,6 +8,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import javax.swing.table.DefaultTableModel;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -22,6 +23,56 @@ import java.util.Iterator;
 public class Cargador {
     static XSSFRow row;
     private static ArrayList<Sismo> sismos = new ArrayList();
+
+    public static DefaultTableModel cargarClientes(ArrayList<Sismo> lista) {
+        String[] encabezado = {"Fecha", "Hora", "Magnitud", "Profundidad", "Origen",
+                "Provincia", "Latitud", "Longitud", "LugarOrigen", "Localizacion"};
+
+        DefaultTableModel dtm = new DefaultTableModel(encabezado, lista.size());
+
+        DateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
+        for (int i = 0; i < dtm.getRowCount(); i++) {
+            Sismo cte = lista.get(i);
+            dtm.setValueAt(formatoFecha.format(cte.getFecha()), i, 0);
+            dtm.setValueAt(formatoHora.format(cte.getInstanteExacto()), i, 1);
+            dtm.setValueAt(cte.getMagnitud(), i, 2);
+            dtm.setValueAt(cte.getProfundidad(), i, 3);
+            if(cte.getOrigen().equals(TOrigen.Subduccion)){
+                dtm.setValueAt("Subducción", i, 4);
+            }else if(cte.getOrigen().equals(TOrigen.TectonicoPorFallaLocal)){
+                dtm.setValueAt("Tectónico por falla local",i,4);
+            }else if(cte.getOrigen().equals(TOrigen.IntraPlaca)){
+                dtm.setValueAt("Intra placa",i,4);
+            }else if(cte.getOrigen().equals(TOrigen.DeformacionInterna)){
+                dtm.setValueAt("Deformación Interna",i,4);
+            }else if(cte.getOrigen().equals(TOrigen.ChoqueDePlacas)){
+                dtm.setValueAt("Choque de placas",i,4);
+            }
+            if (cte.getProvincia()==1)
+                dtm.setValueAt("San José", i, 5);
+            else if (cte.getProvincia()==2)
+                dtm.setValueAt("Alajuela", i, 5);
+            else if (cte.getProvincia()==3)
+                dtm.setValueAt("Cartago", i, 5);
+            else if (cte.getProvincia()==4)
+                dtm.setValueAt("Heredia", i, 5);
+            else if (cte.getProvincia()==5)
+                dtm.setValueAt("Guacanaste", i, 5);
+            else if (cte.getProvincia()==6)
+                dtm.setValueAt("Puntarenas", i, 5);
+            else if (cte.getProvincia()==7)
+                dtm.setValueAt("Limón", i, 5);
+            dtm.setValueAt(cte.getLocalizacionLatitud(), i, 6);
+            dtm.setValueAt(cte.getLocalizacionLongitud(), i, 7);
+            if (cte.getLugarOrigen()==1)
+                dtm.setValueAt("Terrestre", i, 8);
+            else
+                dtm.setValueAt("Maritimo", i, 8);
+            dtm.setValueAt(cte.getLocalizacionDescripcion(), i, 9);
+        }
+        return dtm;
+    }
     public static boolean crearExcelSismos(){
         String fileName = "Excel/baseDatosSismos.xlsx";
         XSSFWorkbook workbook = new XSSFWorkbook();

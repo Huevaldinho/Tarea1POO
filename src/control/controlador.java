@@ -17,6 +17,7 @@ import control.BaseDatos;
 import org.apache.poi.hpsf.Array;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class controlador {
     private Cargador cargador = new Cargador();
@@ -120,5 +121,6 @@ public class controlador {
         }
         return datos;
     }
+    public DefaultTableModel cargarSismosTabla(){return cargador.cargarClientes(BD.getSismos());}
 }
 

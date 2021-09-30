@@ -5,7 +5,18 @@ import java.util.regex.Pattern;
 
 public class Expresiones_Regulares {
     Expresiones_Regulares() {}
+    public boolean verificarHoras (String horas) {
+        Pattern patronHoras = Pattern.compile("^([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?");// no shive
+        Matcher match = patronHoras.matcher(horas);
+        boolean correcto = match.matches();
+        if (correcto) {
+            return true;
+        }
+        else {
+            return false;
+        }
 
+    }
     public boolean verificarCorreoElectronico (String correoElectronico) {
         Pattern patronCorreoElectronico = Pattern.compile("[a-zA-Z0-9]+@{1}[a-zA-Z0-9]+(.com)");
 

@@ -6,6 +6,7 @@ import modelo.TOrigen;
 
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -45,6 +46,11 @@ public class controlador {
         }
         if (magnitud<0)//Magnitud tiene que ser mayor que 0
             return false;
+        DateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
+        if (expresionesRegulares.verificarHoras(formatoHora.format(hora))==false){
+            JOptionPane.showMessageDialog(null, "Ha ingresado una hora incorrecta");
+            return false;
+        }
 
         Sismo nuevoSismo = new Sismo(fecha, hora, profundidad, magnitud,origen,
                                     provincia,latitud,longitud,localzacion,lugarOrigen);

@@ -146,24 +146,20 @@ public class Cargador {
                         String sDate1=cell.getStringCellValue();
                         Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);
                         actual.setFecha(date1);//Esta fecha tiene una hora pero no se utiliza
-                        System.out.println("\nFecha" +actual.getFecha());
                         break;
                     }
                     case 1:{//Hora
                         String shora=cell.getStringCellValue();
                         Date hora=new SimpleDateFormat("HH:mm:ss").parse(shora);
                         actual.setInstanteExacto(hora);
-                        System.out.println("Hora: "+actual.getInstanteExacto());
                         break;
                     }
                     case 2:{//Profundidad
                         actual.setProfundidad(cell.getNumericCellValue());
-                        System.out.println("Profundidad: "+actual.getProfundidad());
                         break;
                     }
                     case 3:{//Magitud
                         actual.setMagnitud(cell.getNumericCellValue());
-                        System.out.println("Magnitud: "+actual.getMagnitud());
                         break;
                     }
                     case 4:{//Origen //Enum
@@ -179,38 +175,31 @@ public class Cargador {
                         }else if(origen.equals("Choque de placas")){
                             actual.setOrigen(TOrigen.ChoqueDePlacas);
                         }
-                        System.out.println(actual.getOrigen());
                         break;
                     }
                     case 5:{//Provincia
                         actual.setProvincia((int) cell.getNumericCellValue());
-                        System.out.println("Provincia:"+actual.getProvincia());
                         break;
                     }
                     case 6:{//Latitud
                         actual.setLocalizacionLatitud(cell.getNumericCellValue());
-                        System.out.println("Latitud "+actual.getLocalizacionLatitud());
                         break;
                     }
                     case 7:{//Longitud
                         actual.setLocalizacionLongitud(cell.getNumericCellValue());
-                        System.out.println("Longitud: "+actual.getLocalizacionLongitud());
                         break;
                     }
                     case 8:{//Origen
                         actual.setLugarOrigen((int) cell.getNumericCellValue());
-                        System.out.println("Lugar origen  (tierra o mar):"+actual.getLugarOrigen() );
                         break;
                     }
                     case 9:{//Descripcion
                         actual.setLocalizacionDescripcion(cell.getStringCellValue());
-                        System.out.println("Descripcion localizacion: "+actual.getLocalizacionDescripcion());
                         break;
                     }
                 }
             }
             sismos.add(actual);
-            System.out.println(formatoFecha.format(actual.getFecha()));
         }
         System.out.println("Se cargaron: "+sismos.size()+" del archivo de excel.");
         fis.close();

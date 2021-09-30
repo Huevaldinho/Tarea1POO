@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import control.controlador;
 import modelo.TOrigen;
@@ -59,9 +60,14 @@ public class Anadir_Sismo extends JFrame {
         double profundidad = 0;
         double latitud =0;
         double longitud= 0;
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        SimpleDateFormat formatoHora = new SimpleDateFormat("hh:mm:ss",Locale.getDefault());
+        formatoFecha.setLenient(false);
+
         try {
-            fecha = new SimpleDateFormat("dd/MM/yyyy").parse(textoFecha.getText());
-            hora = new SimpleDateFormat("hh:mm:ss").parse(textoInstanteExacto.getText());
+
+            fecha = formatoFecha.parse(textoFecha.getText());
+            hora = formatoHora.parse(textoInstanteExacto.getText());
             magnitud =  Double.parseDouble(textoMagnitud.getText());
             profundidad = Double.parseDouble(textoProfundidad.getText());
             latitud = Double.parseDouble(textoLatitud.getText());

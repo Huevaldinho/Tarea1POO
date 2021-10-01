@@ -59,13 +59,13 @@ public class Enviar_Correo {
             DateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
 
             // prepara mensaje a enviar
-            mensaje.setSubject("Nuevo Sismo en " + provincia);
+            mensaje.setSubject("Nuevo Sismo En " + provincia);
             mensaje.setText("Fecha: " + formatoFecha.format(sismo.getFecha()) + "\n"
                     + "Instante Exacto: " + formatoHora.format(sismo.getInstanteExacto()) + "\n"
                     + "Provincia: " + provincia + "\n"
                     + "Latitud: " + sismo.getLocalizacionLatitud() + "\n"
                     + "Longitud: " + sismo.getLocalizacionLongitud() + "\n"
-                    + "Localizacion: " + sismo.getLocalizacionDescripcion() + "\n"
+                    + "Localización: " + sismo.getLocalizacionDescripcion() + "\n"
                     + "Magnitud: " + sismo.getMagnitud() + "\n"
                     + "Profundidad Del Sismo: " + sismo.getProfundidad() + " km\n"
                     + "Origen: " + origen + "\n"

@@ -172,7 +172,7 @@ public class controlador {
         return datos;
 
     }
-    public DefaultTableModel reportePorMagnitud(){
+    public DefaultTableModel reportePorMagnitud(double magnitud){
         ArrayList<Sismo> sismos= BD.getSismos();
         String[] encabezado = {"Fecha", "Hora", "Profundidad", "Origen",
                 "Provincia", "Latitud", "Longitud", "LugarOrigen", "Localizacion"};

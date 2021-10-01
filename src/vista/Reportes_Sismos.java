@@ -48,15 +48,15 @@ public class Reportes_Sismos extends JFrame {
         reportePorFechasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame panelReporteFechas = new Reporte_Fechas(control);
-                panelReporteFechas.setVisible(true);
+                JFrame panelSolicitudFechas = new Solicitud_Fechas(control);
+                panelSolicitudFechas.setVisible(true);
             }
         });
         reportePorMesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame panelReporteMes = new Reporte_Mes(control);
-                panelReporteMes.setVisible(true);
+                JFrame panelSolicitarAnno = new Solicitud_Anno(control);
+                panelSolicitarAnno.setVisible(true);
             }
         });
         reportePorMagnitudButton.addActionListener(new ActionListener() {

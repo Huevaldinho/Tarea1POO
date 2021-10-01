@@ -120,7 +120,7 @@ public class controlador {
         }
     }
     public double[] reporteProvincias()throws IOException, ParseException {
-        ArrayList<Sismo> sismos= cargador.cargarExcelSismos();
+        ArrayList<Sismo> sismos= BD.getSismos();
         int cantidadSismos=0;
         for (Sismo i : sismos){
             cantidadSismos++;
@@ -134,8 +134,9 @@ public class controlador {
         return datos;
     }
     public DefaultTableModel cargarSismosTabla(){return cargador.cargarClientes(BD.getSismos());}
+
     public double[] reporteTipoOrigen()throws IOException, ParseException {
-        ArrayList<Sismo> sismos= cargador.cargarExcelSismos();
+        ArrayList<Sismo> sismos= BD.getSismos();
         int cantidadSismos=0;
         for (Sismo i : sismos){
             cantidadSismos++;
@@ -171,8 +172,8 @@ public class controlador {
         return datos;
 
     }
-    public DefaultTableModel reportePorMagnitud(double magnitud)throws IOException,ParseException{
-        ArrayList<Sismo> sismos= cargador.cargarExcelSismos();
+    public DefaultTableModel reportePorMagnitud(){
+        ArrayList<Sismo> sismos= BD.getSismos();
         String[] encabezado = {"Fecha", "Hora", "Profundidad", "Origen",
                 "Provincia", "Latitud", "Longitud", "LugarOrigen", "Localizacion"};
         int tamannoTabla=0;

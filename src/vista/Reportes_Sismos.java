@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.lang.reflect.Parameter;
+import java.text.ParseException;
 
 public class Reportes_Sismos extends JFrame {
     private JButton reportePorProvinciaButton;

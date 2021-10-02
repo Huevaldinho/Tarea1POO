@@ -6,10 +6,7 @@
 package control;
 
 import jdk.swing.interop.SwingInterOpUtils;
-import modelo.Enviar_Correo;
-import modelo.Persona;
-import modelo.Sismo;
-import modelo.TOrigen;
+import modelo.*;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellBase;
 import org.apache.poi.ss.usermodel.CellType;
@@ -179,11 +176,70 @@ public class BaseDatos {
 
     public boolean annadirPersona(Persona nuevaPersona) {
         for (Persona i : personas){
-            if (i.equals(nuevaPersona))
+            if (i.equals(nuevaPersona)) {
+                JOptionPane.showMessageDialog(null, "Ya existen los datos de contacto ingresados");
                 return false;
+            }
         }
-        System.out.println(nuevaPersona);
-        return personas.add(nuevaPersona);
+        personas.add(nuevaPersona);
+        String fileName =  "Excel/baseDatosPersonas.xlsx";
+        try {
+            InputStream inp = new FileInputStream(new File(fileName));
+            XSSFWorkbook oldWorkbook = new XSSFWorkbook(inp);
+            XSSFSheet oldSheet = oldWorkbook.getSheetAt(0);
+            XSSFRow oldRow = oldSheet.createRow(oldSheet.getLastRowNum() + 1);
+            //oldrow es una nueva fila, le empieza a crear las celdas y asignar los datos.
+            oldRow.createCell(0).setCellValue(nuevaPersona.getNombre());
+            oldRow.createCell(1).setCellValue(nuevaPersona.getCorreoElectronico());
+            if (nuevaPersona.getNumeroTelefono() == null) {
+                oldRow.createCell(2).setCellValue("-");
+            }
+            else {
+                oldRow.createCell(2).setCellValue(nuevaPersona.getNumeroTelefono());
+            }
+
+            String provincias = "";
+            for (NProvincia i : nuevaPersona.getProvinciasInteres()) {
+                if (i.equals(NProvincia.SanJose)) {
+                    provincias += "San José,";
+                }
+                else if (i.equals(NProvincia.Guancaste)) {
+                    provincias += "Guanacaste,";
+                }
+                else if (i.equals(NProvincia.Limon)) {
+                    provincias += "Limón,";
+                }
+                else if (i.equals(NProvincia.Puntarenas)) {
+                    provincias += "Puntarenas,";
+                }
+                else if (i.equals(NProvincia.Heredia)) {
+                    provincias += "Heredia,";
+                }
+                else if (i.equals(NProvincia.Cartago)) {
+                    provincias += "Cartago,";
+                }
+                else if (i.equals(NProvincia.Alajuela)) {
+                    provincias += "Alajuela,";
+                }
+            }
+            provincias =  provincias.substring(0, provincias.length() - 1);
+            oldRow.createCell(3).setCellValue(provincias);
+
+            FileOutputStream fos = null;
+            File file;
+            file = new File(fileName);
+            fos = new FileOutputStream(file);
+            oldWorkbook.write(fos);
+            oldWorkbook.close();
+            fos.close();
+            System.out.println("Se ingresó correctamente!");
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return true;
     }
     public Persona consultarPersona(String nombrePersona){
         Persona aBuscar = new Persona();

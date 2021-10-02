@@ -17,7 +17,7 @@ public class Expresiones_Regulares {
         }
 
     }
-    public boolean verificarCorreoElectronico (String correoElectronico) {
+    public static boolean verificarCorreoElectronico (String correoElectronico) {
         Pattern patronCorreoElectronico = Pattern.compile("[a-zA-Z0-9]+@{1}[a-zA-Z0-9]+(.com)");
 
         Matcher correoElectronicoUsuario = patronCorreoElectronico.matcher(correoElectronico);
@@ -30,7 +30,7 @@ public class Expresiones_Regulares {
             return false;
         }
     }
-    public boolean verificarNumeroTelefono (String numeroTelefono) {
+    public static boolean verificarNumeroTelefono (String numeroTelefono) {
         Pattern patronNumeroTelefono = Pattern.compile("^[0-9]{4}-{1}[0-9]{4}$");
         Matcher match = patronNumeroTelefono.matcher(numeroTelefono);
         boolean correcto = match.matches();

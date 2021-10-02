@@ -33,6 +33,13 @@ public class controlador {
         else{
             BD.setSismos(arrayTmp);
         }
+        ArrayList<Persona> personasTemp = cargador.cargarExcelPersonas();
+        if (personasTemp.isEmpty()) {
+            cargador.crearExcelPersonas();
+        }
+        else {
+            BD.setPersonas(personasTemp);
+        }
     }
     public boolean agregarSismo(Date fecha, Date hora,double profundidad,double  magnitud,TOrigen origen, int provincia,
                                 double latitud,double longitud,String localzacion,int lugarOrigen) throws IOException {

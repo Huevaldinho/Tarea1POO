@@ -38,9 +38,6 @@ public class Anadir_Persona extends JFrame {
                     if (extraerInformacion()) {
                         JOptionPane.showMessageDialog(null, "Se ha ingresado la persona");
                     }
-                    else {
-                        JOptionPane.showMessageDialog(null, "Inténtelo de nuevo");
-                    }
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }

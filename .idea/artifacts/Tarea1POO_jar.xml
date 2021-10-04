@@ -3,6 +3,8 @@
     <output-path>$PROJECT_DIR$/out/artifacts/Tarea1POO_jar</output-path>
     <root id="archive" name="Tarea1POO.jar">
       <element id="module-output" name="Tarea1POO" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Librerias Externas/jcommon-1.0.23.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Librerias Externas/jfreechart-1.0.19.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/Librerias Externas/poi-5.0.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/Librerias Externas/javax.mail.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/Librerias Externas/curvesapi-1.06.jar" path-in-jar="/" />
@@ -18,7 +20,10 @@
       <element id="extracted-dir" path="$PROJECT_DIR$/Librerias Externas/poi-scratchpad-5.0.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/Librerias Externas/commons-compress-1.20.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/Librerias Externas/poi-integration-5.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/Librerias Externas/javax.activation-1.2.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/Librerias Externas/commons-collections4-4.4.jar" path-in-jar="/" />
+      <element id="file-copy" path="$PROJECT_DIR$/Excel/baseDatosPersonas.xlsx" />
+      <element id="file-copy" path="$PROJECT_DIR$/Excel/baseDatosSismos.xlsx" />
     </root>
   </artifact>
 </component>

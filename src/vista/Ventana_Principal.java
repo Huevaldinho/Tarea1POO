@@ -61,10 +61,12 @@ public class Ventana_Principal extends JFrame {
 
     public static void main(String[] args) throws IOException, ParseException {
         control = new controlador();
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Ventana_Principal().setVisible(true);
-            }
-        });
+        JFrame interfaz = new Ventana_Principal();
+        interfaz.setVisible(true);
+        //java.awt.EventQueue.invokeLater(new Runnable() {
+          //  public void run() {
+            //    new Ventana_Principal().setVisible(true);
+            //}
+        //});
     }
 }

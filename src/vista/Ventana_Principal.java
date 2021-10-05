@@ -3,12 +3,18 @@ package vista;
 import control.Cargador;
 import modelo.Sismo;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
+
 import control.controlador;
 
 public class Ventana_Principal extends JFrame {

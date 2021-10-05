@@ -35,11 +35,10 @@ public class Solicitud_Fechas extends JFrame{
                         JFrame panelReporteFechas = new Reporte_Fechas(control,fechaFuncionInicial,fechaFuncionFinal);
                         panelReporteFechas.setVisible(true);
                     }else{
-                        System.out.println("No hizo ni pinga");
                         JOptionPane.showMessageDialog(null,"Ingrese una fecha válida");
                     }
                 }catch (IOException ex){
-                ex.printStackTrace();
+                    ex.printStackTrace();
                 }
             }
         });

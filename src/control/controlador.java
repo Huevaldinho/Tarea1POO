@@ -319,7 +319,6 @@ public class controlador {
         }
         return dtm;
     }
-
     public boolean reporteFechasValidar(Date fechaInicial,Date fechaFinal){
         Date fechaActual = new Date(System.currentTimeMillis());
         if (fechaInicial.after(fechaActual)||fechaFinal.after(fechaActual)){
@@ -327,27 +326,47 @@ public class controlador {
         }
         return !fechaInicial.after(fechaFinal);
     }
-    public boolean reportesPorMesEnUnAnnoValidar(String anno){
-        Date annoConvertido;
-        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy", Locale.getDefault());
-        try{
-            annoConvertido=formatoFecha.parse(anno);
-            return true;
-        }catch (ParseException e){
-            System.out.println("ERROR EN EL PARSE");
-            e.printStackTrace();
-            return false;
-        }
-    }
-    public boolean reportesPorMesEnUnAnno(Date anno){
-    ArrayList<Sismo> sismos= BD.getSismos();
-    int e=0;int f=0;int mz=0;int ab=0;int my=0;int jn=0;int jl=0;int ag=0;int s=0;int o=0;int n=0;int d=0;
-    //for (Sismo i : sismos){
-    //}
-    double datos[]=new double[5];
-    datos[0]=(sb*100)/cantidadSismos;datos[1]=(cp*100)/cantidadSismos;datos[2]=(tpf*100)/cantidadSismos;datos[3]=(ip*100)/cantidadSismos;datos[4]=(di*100)/cantidadSismos;
-        return datos;
 
+    public double[] reportesPorMesEnUnAnno(Date anno){
+        System.out.println("Esta en los reportes");
+        ArrayList<Sismo> sismos= BD.getSismos();
+        Calendar annoIngresado=Calendar.getInstance();
+        annoIngresado.setTime(anno);
+        int e=0;int f=0;int mz=0;int ab=0;int my=0;int jn=0;int jl=0;int ag=0;int s=0;int o=0;int n=0;int d=0;
+        for (Sismo i : sismos){
+            Date date = i.getFecha();// the date instance
+            Calendar annoSismo = Calendar.getInstance();
+            annoSismo.setTime(date);
+            if (annoSismo.get(Calendar.YEAR)==annoIngresado.get(Calendar.YEAR)){
+                if (annoSismo.get(Calendar.MONTH)==Calendar.JANUARY)
+                    e++;
+                else if (annoSismo.get(Calendar.MONTH)==Calendar.FEBRUARY)
+                    f++;
+                else if (annoSismo.get(Calendar.MONTH)==Calendar.MARCH)
+                    mz++;
+                else if (annoSismo.get(Calendar.MONTH)==Calendar.APRIL)
+                    ab++;
+                else if (annoSismo.get(Calendar.MONTH)==Calendar.MAY)
+                    my++;
+                else if (annoSismo.get(Calendar.MONTH)==Calendar.JUNE)
+                    jn++;
+                else if (annoSismo.get(Calendar.MONTH)==Calendar.JULY)
+                    jl++;
+                else if (annoSismo.get(Calendar.MONTH)==Calendar.AUGUST)
+                    ag++;
+                else if (annoSismo.get(Calendar.MONTH)==Calendar.SEPTEMBER)
+                    s++;
+                else if (annoSismo.get(Calendar.MONTH)==Calendar.OCTOBER)
+                    o++;
+                else if (annoSismo.get(Calendar.MONTH)==Calendar.NOVEMBER)
+                    n++;
+                else if (annoSismo.get(Calendar.MONTH)==Calendar.DECEMBER)
+                    d++;
+            }
+        }
+        double datos[]=new double[12];
+        datos[0]=e;datos[1]=f;datos[2]=mz;datos[3]=ab;datos[4]=my;datos[5]=jn;datos[6]=jl;datos[7]=ag;datos[8]=s;datos[9]=o;datos[10]=n;datos[11]=d;
+        return datos;
     }
 
 }

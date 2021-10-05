@@ -9,15 +9,17 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RefineryUtilities;
 import control.controlador;
+import java.util.Date;
 
 public class GraficoBarras extends ApplicationFrame {
-    public GraficoBarras( String applicationTitle , String chartTitle ) {
+    private controlador controlador;
+    public GraficoBarras( String applicationTitle , String chartTitle , Date anno,double[]info) {
     super( applicationTitle );
     JFreeChart barChart = ChartFactory.createBarChart(
             chartTitle,
             "Mes",
             "Cantidad",
-            createDataset(),
+            createDataset(anno,info),
             PlotOrientation.VERTICAL,
             true, true, false);
 
@@ -26,7 +28,8 @@ public class GraficoBarras extends ApplicationFrame {
     setContentPane( chartPanel );
 }
 
-    private CategoryDataset createDataset( ) {
+    private CategoryDataset createDataset(Date anno,double[]info ) {
+        System.out.println("LLEGO HASTA AQUI");
         final String enero = "Enero";
         final String febrero = "Febrero";
         final String marzo = "Marzo";
@@ -43,20 +46,20 @@ public class GraficoBarras extends ApplicationFrame {
         final DefaultCategoryDataset dataset =
                 new DefaultCategoryDataset( );
 
-        dataset.addValue( 1.0 , enero , mes );
-        dataset.addValue( 3.0 , febrero , mes );
-        dataset.addValue( 5.0 , marzo , mes );
-        dataset.addValue( 5.0 , abril , mes );
+        dataset.addValue( info[0], enero , mes );
+        dataset.addValue( info[1] , febrero , mes );
+        dataset.addValue( info[2] , marzo , mes );
+        dataset.addValue( info[3], abril , mes );
 
-        dataset.addValue( 5.0 , mayo , mes );
-        dataset.addValue( 6.0 , junio , mes );
-        dataset.addValue( 10.0 , julio , mes );
-        dataset.addValue( 4.0 , agosto , mes );
+        dataset.addValue( info[4], mayo , mes );
+        dataset.addValue( info[5], junio , mes );
+        dataset.addValue( info[6] , julio , mes );
+        dataset.addValue( info[7] , agosto , mes );
 
-        dataset.addValue( 4.0 , septiembre , mes );
-        dataset.addValue( 2.0 , octubre , mes );
-        dataset.addValue( 3.0 , noviembre , mes );
-        dataset.addValue( 6.0 , diciembre , mes );
+        dataset.addValue( info[8] , septiembre , mes );
+        dataset.addValue( info[9], octubre , mes );
+        dataset.addValue( info[10] , noviembre , mes );
+        dataset.addValue( info[11], diciembre , mes );
 
         return dataset;
     }

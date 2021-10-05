@@ -9,10 +9,13 @@ public class Reporte_Magnitud extends JFrame{
     private controlador control;
 
     Reporte_Magnitud(controlador control) {
-        super("Reporte por Mes");
-        this.control = control;
+        super("Reporte por Magnitud");
         setContentPane(panel);
         this.pack();
+        this.control=control;
+        tablaMagnitud.setModel(control.reportePorMagnitud());
+        tablaMagnitud.setVisible(true);
+        panel.setVisible(true);
     }
 }
 

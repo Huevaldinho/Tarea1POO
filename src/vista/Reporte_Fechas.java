@@ -19,9 +19,6 @@ public class Reporte_Fechas extends JFrame {
         setContentPane(panel);
         this.pack();
         this.control=control;
-        if (control.reporteFechas(fechaInicial,fechaFinal)==null)
-            System.out.println("FFFFFFFF");
-        //JTable tablaSismosFecha = new JTable();
         tablaSismosFecha.setModel(control.reporteFechas(fechaInicial,fechaFinal));
         tablaSismosFecha.setVisible(true);
         panel.setVisible(true);

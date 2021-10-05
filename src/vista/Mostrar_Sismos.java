@@ -20,7 +20,6 @@ public class Mostrar_Sismos extends JFrame {
         setContentPane(panel);
         this.pack();
         this.control=control;
-
         tablaSismos.setModel(control.cargarSismosTabla());//Por que marca error?
         tablaSismos.setVisible(true);
         panel.setVisible(true);

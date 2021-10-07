@@ -64,7 +64,7 @@ public class BaseDatos {
     }
     /**
      * Agregar sismo a la lista
-     * @param Sismo: Sismo que se va a agregar.
+     * @param nuevoSismo: Sismo que se va a agregar.
      * @return boolean: Si pudo agregar el sismo retorna true, si no, retorna false.
      */
     public boolean annadirSismo(Sismo nuevoSismo) throws IOException {
@@ -122,8 +122,8 @@ public class BaseDatos {
     }
     /**
      * Consultar sismo en la lista
-     * @param Date: Fecha del sismo.
-     * @param Date: Instante exacto del sismo.
+     * @param fecha: Fecha del sismo.
+     * @param instanteExacto: Instante exacto del sismo.
      * @return Sismo: Sismo encontrado o null si no lo encontro.
      */
     public Sismo consultarSismo(Date fecha, Date instanteExacto){
@@ -138,9 +138,9 @@ public class BaseDatos {
     }
     /**
      * Modifica la localizacion de un sismo
-     * @param Date: Instante del sismo que se va a modificar
-     * @param int: Provincia donde se produjo el sismo.
-     * @param String: Nueva localizacion.
+     * @param nuevoInstante: Instante del sismo que se va a modificar
+     * @param nuevaProvincia: Provincia donde se produjo el sismo.
+     * @param nuevaLocalizacion: Nueva localizacion.
      * @return true modifico el sismo, false de lo contrario.
      */
     public boolean modificarSismo(Date nuevoInstante, int nuevaProvincia, String nuevaLocalizacion) throws IOException {
@@ -185,7 +185,7 @@ public class BaseDatos {
     }
     /**
      * Eliminar un sismo de la lista
-     * @param Sismo: Sismo que se eliminara
+     * @param sismoEliminar: Sismo que se eliminara
      * @return true modifico el sismo, false de lo contrario.
      */
     public boolean eliminarSismo (Sismo sismoEliminar){

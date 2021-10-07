@@ -29,7 +29,7 @@ public class Cargador {
     private static ArrayList<Persona> personas = new ArrayList();
     /**
      * Crear el modelo de la tabla para mostrar sismos en la interfaz grafica.
-     * @param ArrayList<Sismo>: Lista de sismos que se mostraran en la interfaz.
+     * @param lista: Lista de sismos que se mostraran en la interfaz.
      * @return DefaultTableModel: Modelo de la tabla.
      */
     public static DefaultTableModel cargarClientes(ArrayList<Sismo> lista) {

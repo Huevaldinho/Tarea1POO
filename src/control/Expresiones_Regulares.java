@@ -7,7 +7,7 @@ public class Expresiones_Regulares {
     Expresiones_Regulares() {}
     /**
      * Solicita al cargador que cree el modelo para la tabla de la interfaz grafica.
-     * @param String: Hora exacta del sismo.
+     * @param horas: Hora exacta del sismo.
      * @return boolean: True si es una hora valida, false de lo contrario.
      */
     public boolean verificarHoras (String horas) {

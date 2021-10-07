@@ -46,16 +46,16 @@ public class controlador {
     }
     /**
      * Agregar sismo a la lista
-     * @param Date: Fecha del sismo
-     * @param Date: Instante exacto del sismo.
-     * @param double: Profundidad del sismo.
-     * @param double: Magnitud del sismo.
-     * @param TOrigen: Origen del sismo.
-     * @param int: Provincia donde se produjo.
-     * @param double: Latitud del sismo.
-     * @param double: Longitud del sismo.
-     * @param string: Localizacion: Descripcion de la localizacion.
-     * @param int: Sismo terrestre o sismo maritimo.
+     * @param fecha: Fecha del sismo
+     * @param hora: Instante exacto del sismo.
+     * @param profundidad: Profundidad del sismo.
+     * @param magnitud: Magnitud del sismo.
+     * @param origen: Origen del sismo.
+     * @param provincia: Provincia donde se produjo.
+     * @param latitud: Latitud del sismo.
+     * @param longitud: Longitud del sismo.
+     * @param localzacion: Localizacion: Descripcion de la localizacion.
+     * @param lugarOrigen: Sismo terrestre o sismo maritimo.
      * @return boolean: true si se agrego, false de lo contrario.
      */
     public boolean agregarSismo(Date fecha, Date hora,double profundidad,double  magnitud,TOrigen origen, int provincia,
@@ -82,9 +82,9 @@ public class controlador {
     }
     /**
      * Modificar la localizacion de un sismo
-     * @param Date: Fecha del sismo
-     * @param Date: Instante exacto del sismo.
-     * @param string: Localizacion: Nueva descripcion de la localizacion.
+     * @param hora: Fecha del sismo
+     * @param provinciaNueva: Instante exacto del sismo.
+     * @param localizacion: Localizacion: Nueva descripcion de la localizacion.
      * @return boolean: true si se modifico, false de lo contrario.
      */
     public boolean modificarSismo(Date hora, int provinciaNueva, String localizacion) throws IOException {

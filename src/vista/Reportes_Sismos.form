@@ -78,16 +78,6 @@
           <text value="Reporte Por Mes En Un Año"/>
         </properties>
       </component>
-      <hspacer id="db90a">
-        <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </hspacer>
-      <hspacer id="c35d">
-        <constraints>
-          <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </hspacer>
       <component id="f02b3" class="javax.swing.JButton" binding="reportePorMagnitudButton" default-binding="true">
         <constraints>
           <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>

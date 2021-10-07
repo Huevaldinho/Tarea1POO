@@ -224,10 +224,20 @@ public class controlador {
             dtm.setValueAt("Terrestre", i, 9);
         else
             dtm.setValueAt("Marítimo", i, 9);
+        dtm.setValueAt(sismo.getLocalizacionDescripcion(), i, 10);
         return dtm;
     }
     public DefaultTableModel reportePorMagnitud(){
         ArrayList<Sismo> sismos= BD.getSismos();
+
+        Collections.sort(sismos, new Comparator<Sismo>() { // ordena el arrayList
+            @Override
+            public int compare(Sismo s1, Sismo s2) {
+                //noinspection removal
+                return new Double(s1.getMagnitud()).compareTo(new Double(s2.getMagnitud()));
+            }
+        });
+
         String[] encabezado = {"Descripción","Magnitud","Fecha","Hora","Profundidad","Origen",
                 "Provincia", "Latitud", "Longitud", "LugarOrigen", "Localizacion"};
         DefaultTableModel dtm = new DefaultTableModel(encabezado,sismos.size());
@@ -262,11 +272,12 @@ public class controlador {
                 "Provincia", "Latitud", "Longitud", "LugarOrigen", "Localizacion","Descripción"};
         int tamannoTabla = 0;
         for (Sismo i :sismos){
-            if (i.getFecha().after(fechaInicial)||i.getFecha()==fechaFinal) {
-                if (i.getFecha().before(fechaFinal))
+            if (i.getFecha().after(fechaInicial) || i.getFecha().equals(fechaInicial)) {
+                if (i.getFecha().before(fechaFinal) || i.getFecha().equals(fechaFinal))
                     tamannoTabla++;
             }
         }
+        System.out.println(tamannoTabla);
         DefaultTableModel dtm = new DefaultTableModel(encabezado,tamannoTabla);
         DateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
         DateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
@@ -275,8 +286,8 @@ public class controlador {
             if (contador > tamannoTabla) {
                 break;
             }
-            if (sismo.getFecha().after(fechaInicial) || sismo.getFecha() == fechaFinal) {
-                if (sismo.getFecha().before(fechaFinal)) {
+            if (sismo.getFecha().after(fechaInicial) || sismo.getFecha().equals(fechaInicial)) {
+                if (sismo.getFecha().before(fechaFinal) || sismo.getFecha().equals(fechaFinal)) {
                     dtm.setValueAt(formatoFecha.format(sismo.getFecha()), contador, 0);
                     dtm.setValueAt(formatoHora.format(sismo.getInstanteExacto()), contador, 1);
                     dtm.setValueAt(sismo.getMagnitud(), contador, 2);

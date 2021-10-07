@@ -1,6 +1,7 @@
 package vista;
 
-import javax.swing.JPanel;
+import javax.swing.*;
+
 import control.controlador;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;

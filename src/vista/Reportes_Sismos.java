@@ -41,6 +41,7 @@ public class Reportes_Sismos extends JFrame {
             public void actionPerformed(ActionEvent e){
                 PieChart demo = new PieChart( "Reporte de Sismos por Origen",control );
                 demo.setSize( 560 , 367 );
+
                 RefineryUtilities.centerFrameOnScreen( demo );
                 demo.setVisible( true );
             }

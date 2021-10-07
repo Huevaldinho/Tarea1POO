@@ -25,6 +25,9 @@ public class controlador {
     private BaseDatos BD;  // asociación comunicación entre el controlador y el admClientes
     private Expresiones_Regulares expresionesRegulares = new Expresiones_Regulares();
 
+    /**
+     * Crear un controlador que sirve de intermediario entre la UI y la Base de datos.
+     */
     public controlador() throws IOException, ParseException {
         BD = new BaseDatos();
         ArrayList<Sismo> arrayTmp= cargador.cargarExcelSismos();
@@ -41,6 +44,20 @@ public class controlador {
             BD.setPersonas(personasTemp);
         }
     }
+    /**
+     * Agregar sismo a la lista
+     * @param Date: Fecha del sismo
+     * @param Date: Instante exacto del sismo.
+     * @param double: Profundidad del sismo.
+     * @param double: Magnitud del sismo.
+     * @param TOrigen: Origen del sismo.
+     * @param int: Provincia donde se produjo.
+     * @param double: Latitud del sismo.
+     * @param double: Longitud del sismo.
+     * @param string: Localizacion: Descripcion de la localizacion.
+     * @param int: Sismo terrestre o sismo maritimo.
+     * @return boolean: true si se agrego, false de lo contrario.
+     */
     public boolean agregarSismo(Date fecha, Date hora,double profundidad,double  magnitud,TOrigen origen, int provincia,
                                 double latitud,double longitud,String localzacion,int lugarOrigen) throws IOException {
         //Falta validar fechas y horas
@@ -63,11 +80,14 @@ public class controlador {
                                     provincia,latitud,longitud,localzacion,lugarOrigen);
         return BD.annadirSismo(nuevoSismo);
     }
+    /**
+     * Modificar la localizacion de un sismo
+     * @param Date: Fecha del sismo
+     * @param Date: Instante exacto del sismo.
+     * @param string: Localizacion: Nueva descripcion de la localizacion.
+     * @return boolean: true si se modifico, false de lo contrario.
+     */
     public boolean modificarSismo(Date hora, int provinciaNueva, String localizacion) throws IOException {
-        //Validar
-        //Calendar fechaYHoraPrueba = Calendar.getInstance();
-        //fechaYHoraPrueba.set(2001,9,31,05,30,00);
-        //System.out.println(fechaYHoraPrueba.getTime());
         return BD.modificarSismo(hora,provinciaNueva,localizacion);
     }
 
@@ -140,6 +160,10 @@ public class controlador {
         }
         return datos;
     }
+    /**
+     * Solicita al cargador que cree el modelo para la tabla de la interfaz grafica.
+     * @return DefaultTableModel: Modelo de la tabla para la interfaz grafica.
+     */
     public DefaultTableModel cargarSismosTabla(){return cargador.cargarClientes(BD.getSismos());}
 
     public double[] reporteTipoOrigen()throws IOException, ParseException {

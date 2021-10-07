@@ -29,6 +29,9 @@ public class Anadir_Sismo extends JFrame {
     private controlador control;
 
     Anadir_Sismo() {    }
+    /**
+     * Interfaz grafica para annadir sismos.
+     */
     Anadir_Sismo(controlador control) {
         super("Añadir Sismo");
         setContentPane(panel);
@@ -51,7 +54,10 @@ public class Anadir_Sismo extends JFrame {
         });
 
     }
-
+    /**
+     * Extrae la informacion ingresada a la interfaz grafica.
+     * @return true si todos los datos tienen formato valida, false de lo contrario.
+     */
     private boolean extraerInformacion() throws IOException {
         String localizacion = textoLocalizacion.getText();
         Date fecha= null;

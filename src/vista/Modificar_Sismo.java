@@ -17,6 +17,9 @@ public class Modificar_Sismo extends JFrame {
     private controlador control;
 
     Modificar_Sismo() {    }
+    /**
+     * Interfaz grafica para modificar sismos.
+     */
     Modificar_Sismo(controlador control) {
         super("Modificar Sismo");
         setContentPane(panel);
@@ -37,7 +40,10 @@ public class Modificar_Sismo extends JFrame {
             }
         });
     }
-
+    /**
+     * Extrae la informacion ingresada a la interfaz grafica.
+     * @return true si todos los datos tienen formato valida, false de lo contrario.
+     */
     public boolean extraerDatosModificar() throws IOException {
         Date hora=null;
         String nuevaLocalizacion;

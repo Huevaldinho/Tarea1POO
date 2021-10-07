@@ -5,6 +5,11 @@ import java.util.regex.Pattern;
 
 public class Expresiones_Regulares {
     Expresiones_Regulares() {}
+    /**
+     * Solicita al cargador que cree el modelo para la tabla de la interfaz grafica.
+     * @param String: Hora exacta del sismo.
+     * @return boolean: True si es una hora valida, false de lo contrario.
+     */
     public boolean verificarHoras (String horas) {
         Pattern patronHoras = Pattern.compile("^([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?");// no shive
         Matcher match = patronHoras.matcher(horas);

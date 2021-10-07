@@ -62,10 +62,11 @@ public class BaseDatos {
         }
         return text.toString();
     }
-
-    //Métodos
-
-
+    /**
+     * Agregar sismo a la lista
+     * @param Sismo: Sismo que se va a agregar.
+     * @return boolean: Si pudo agregar el sismo retorna true, si no, retorna false.
+     */
     public boolean annadirSismo(Sismo nuevoSismo) throws IOException {
         for (Sismo i : sismos){//Revisa si ya está registrado
             if (i.equals(nuevoSismo))
@@ -119,6 +120,12 @@ public class BaseDatos {
         Enviar_Correo.enviarCorreo(personas, nuevoSismo);
         return true;
     }
+    /**
+     * Consultar sismo en la lista
+     * @param Date: Fecha del sismo.
+     * @param Date: Instante exacto del sismo.
+     * @return Sismo: Sismo encontrado o null si no lo encontro.
+     */
     public Sismo consultarSismo(Date fecha, Date instanteExacto){
         Sismo aBuscar = new Sismo();
         aBuscar.setFecha(fecha);
@@ -129,6 +136,13 @@ public class BaseDatos {
         }
         return null;
     }
+    /**
+     * Modifica la localizacion de un sismo
+     * @param Date: Instante del sismo que se va a modificar
+     * @param int: Provincia donde se produjo el sismo.
+     * @param String: Nueva localizacion.
+     * @return true modifico el sismo, false de lo contrario.
+     */
     public boolean modificarSismo(Date nuevoInstante, int nuevaProvincia, String nuevaLocalizacion) throws IOException {
         if (sismos.isEmpty())
                 return false;
@@ -145,10 +159,9 @@ public class BaseDatos {
                 encontro=true;
                 break;
             }
-        }//falta agregar fecha
+        }
         if (encontro==false)
             return false;
-
         System.out.println("Cambio en sismos: " +sismos.get(index-1).getLocalizacionDescripcion()+" en RAM esta en el indice: "+(index-1) );
         String nombreArchivo =  "Excel/baseDatosSismos.xlsx";
         //hay una diferencia de dos numeros en el indice del excel
@@ -170,6 +183,11 @@ public class BaseDatos {
         System.out.println("Se modifico correctamente!");
         return  true;
     }
+    /**
+     * Eliminar un sismo de la lista
+     * @param Sismo: Sismo que se eliminara
+     * @return true modifico el sismo, false de lo contrario.
+     */
     public boolean eliminarSismo (Sismo sismoEliminar){
         return sismos.remove(sismoEliminar);
     }
@@ -241,6 +259,7 @@ public class BaseDatos {
         }
         return true;
     }
+
     public Persona consultarPersona(String nombrePersona){
         Persona aBuscar = new Persona();
         aBuscar.setNombre(nombrePersona);

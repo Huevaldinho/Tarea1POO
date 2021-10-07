@@ -27,7 +27,11 @@ public class Cargador {
     static XSSFRow row;
     private static ArrayList<Sismo> sismos = new ArrayList();
     private static ArrayList<Persona> personas = new ArrayList();
-
+    /**
+     * Crear el modelo de la tabla para mostrar sismos en la interfaz grafica.
+     * @param ArrayList<Sismo>: Lista de sismos que se mostraran en la interfaz.
+     * @return DefaultTableModel: Modelo de la tabla.
+     */
     public static DefaultTableModel cargarClientes(ArrayList<Sismo> lista) {
         String[] encabezado = {"Fecha", "Hora", "Magnitud", "Profundidad", "Origen",
                 "Provincia", "Latitud", "Longitud", "LugarOrigen", "Localizacion"};
@@ -77,7 +81,9 @@ public class Cargador {
         }
         return dtm;
     }
-
+    /**
+     * Crear archivo de excel en caso de no encontrarlo.
+     */
     public static boolean crearExcelSismos() {
         String fileName = "Excel/baseDatosSismos.xlsx";
         XSSFWorkbook workbook = new XSSFWorkbook();
@@ -109,7 +115,10 @@ public class Cargador {
         }
         return true;
     }
-
+    /**
+     * Cargar los datos del excel a un arraylist.
+     * @return ArrayList<Sismo>: Lista de sismos.
+     */
     public static ArrayList<Sismo> cargarExcelSismos() throws IOException, ParseException {//se esta cargando mal en ram
         //Trae archivo excel
         FileInputStream fis = null;

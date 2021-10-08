@@ -3,6 +3,10 @@ package vista;
 import javax.swing.*;
 import control.controlador;
 
+/**
+ * Interfaz para mostrar el reporte por magnitud
+ */
+
 public class Reporte_Magnitud extends JFrame{
     private JPanel panel;
     private JTable tablaMagnitud;

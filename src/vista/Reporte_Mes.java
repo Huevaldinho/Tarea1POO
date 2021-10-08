@@ -6,6 +6,10 @@ import org.jfree.ui.RefineryUtilities;
 
 import java.util.Date;
 
+/**
+ * Interfaz para mostrar el reporte por mes
+ */
+
 public class Reporte_Mes extends JFrame{
     private JPanel panel;
     private controlador control;

@@ -9,6 +9,10 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Interfaz para annadir una nueva persona a la app
+ */
+
 public class Anadir_Persona extends JFrame {
     private JPanel anadirPersonaPanel;
     private JTextField textoNombre;

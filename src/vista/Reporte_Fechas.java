@@ -4,6 +4,10 @@ import javax.swing.*;
 import control.controlador;
 import java.util.Date;
 
+/**
+ * Interfaz para mostrar el reporte por fechas
+ */
+
 public class Reporte_Fechas extends JFrame {
     private JPanel panel;
     private JTable tablaSismosFecha;

@@ -11,6 +11,10 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Locale;
 
+/**
+ * Interfaz para solicitar fechas para elaborar un reporte
+ */
+
 public class Solicitud_Fechas extends JFrame{
     private JTextField textoFechaInicial;
     private JTextField textoFechaFinal;

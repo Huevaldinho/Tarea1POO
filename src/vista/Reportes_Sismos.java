@@ -10,6 +10,10 @@ import java.io.IOException;
 import java.lang.reflect.Parameter;
 import java.text.ParseException;
 
+/**
+ * Menu de los diferentes reportes de los sismos
+ */
+
 public class Reportes_Sismos extends JFrame {
     private JButton reportePorProvinciaButton;
     private JButton reportePorMagnitudButton;

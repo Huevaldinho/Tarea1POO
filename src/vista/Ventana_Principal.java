@@ -17,6 +17,10 @@ import java.util.Locale;
 
 import control.controlador;
 
+/**
+ * Interfaz principal de la aplicacion
+ */
+
 public class Ventana_Principal extends JFrame {
     private JPanel principalPanel;
     private JButton móduloDeSismosButton;

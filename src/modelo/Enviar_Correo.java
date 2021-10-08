@@ -6,11 +6,20 @@ import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 
+/**
+ * Esta clase funciona para enviar correos electronicos, en este caso usando el servidor de Gmail
+ */
+
 public class Enviar_Correo {
     private static final String from = "plataformasismospoo"; // establecer de donde se va a enviar (debe ser gmail)
     private static final String contrasena = "contrasenaCorreo"; // establecer contrasena del correo from
 
     public Enviar_Correo() {}
+
+    /**
+     * @param listaPersonas personas registradas en la app
+     * @param sismo nuevo sismo que se registro
+     */
 
     public static void enviarCorreo(ArrayList<Persona> listaPersonas, Sismo sismo) {
         // se establece el smtp de gmail

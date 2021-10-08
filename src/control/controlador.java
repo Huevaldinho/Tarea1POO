@@ -91,6 +91,15 @@ public class controlador {
         return BD.modificarSismo(hora,provinciaNueva,localizacion);
     }
 
+    /**
+     * Metodo sobrecargado para annadir persona utilizando un numero de telefono
+     * @param nombre nombre de la persona
+     * @param correoElectronico correo electronico de la persona
+     * @param numeroTelefono numero de telefono de la persona
+     * @param lista lista que contiene las provincias de interes de la persona
+     * @return retorna un booleano para verificar si se annadio la persona de forma exitosa
+     */
+
     public boolean agregarPersona(String nombre, String correoElectronico, String numeroTelefono, ArrayList<NProvincia> lista) {
         if (nombre.equals("")) {
             JOptionPane.showMessageDialog(null, "Ingrese un nombre");
@@ -123,6 +132,14 @@ public class controlador {
             return false;
         }
     }
+
+    /**
+     * Metodo sobrecargado para annadir persona sin numero de telefono
+     * @param nombre nombre de la persona
+     * @param correoElectronico correo electronico de la persona
+     * @param lista lista que contiene las provincias de interes de la persona
+     * @return retorna un booleano para verificar si se annadio la persona de forma exitosa
+     */
 
     public boolean agregarPersona(String nombre, String correoElectronico, ArrayList<NProvincia> lista) {
         if (nombre.equals("")) {

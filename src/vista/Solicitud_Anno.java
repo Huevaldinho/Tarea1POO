@@ -11,6 +11,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+/**
+ * Interfaz para solicitar un anno para hacer un reporte
+ */
+
 public class Solicitud_Anno extends JFrame {
     private JTextField textoAnno;
     private JButton botonAceptar;

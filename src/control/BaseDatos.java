@@ -192,6 +192,12 @@ public class BaseDatos {
         return sismos.remove(sismoEliminar);
     }
 
+    /**
+     * Annade la nueva persona a la base de datos y al excel
+     * @param nuevaPersona persona instanciada en el controlador
+     * @return booleano para verificar si se annadio exitosamente
+     */
+
     public boolean annadirPersona(Persona nuevaPersona) {
         for (Persona i : personas){
             if (i.equals(nuevaPersona)) {

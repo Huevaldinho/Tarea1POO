@@ -5,6 +5,10 @@
 
 package modelo;
 
+/**
+ * Enum que contiene los diferentes tipos de origen de un sismo
+ */
+
 public enum TOrigen {
     Subduccion, ChoqueDePlacas, TectonicoPorFallaLocal, IntraPlaca, DeformacionInterna
 }

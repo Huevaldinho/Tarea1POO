@@ -37,7 +37,7 @@
           <text value="Reportes De Sismos"/>
         </properties>
       </component>
-      <component id="f13f9" class="javax.swing.JButton" binding="móduloDeSismosButton" default-binding="true">
+      <component id="f13f9" class="javax.swing.JButton" binding="moduloDeSismosButton">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -48,7 +48,7 @@
           <text value="Módulo De Sismos"/>
         </properties>
       </component>
-      <component id="45f7a" class="javax.swing.JButton" binding="añadirPersonaParaSerButton" default-binding="true">
+      <component id="45f7a" class="javax.swing.JButton" binding="anadirPersonaParaSerButton">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>

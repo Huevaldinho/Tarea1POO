@@ -7,6 +7,10 @@ package modelo;
 
 import java.util.Date;
 
+/**
+ * Modelo de un sismo
+ */
+
 public class Sismo {
     //Atributos
     private Date fecha;

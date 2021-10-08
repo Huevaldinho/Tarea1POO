@@ -23,6 +23,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 
+/**
+ * Modelo para cargar ciertos elementos para la app
+ */
+
 public class Cargador {
     static XSSFRow row;
     private static ArrayList<Sismo> sismos = new ArrayList();
@@ -117,7 +121,7 @@ public class Cargador {
     }
     /**
      * Cargar los datos del excel a un arraylist.
-     * @return ArrayList<Sismo>: Lista de sismos.
+     * @return retorna la lista de sismos.
      */
     public static ArrayList<Sismo> cargarExcelSismos() throws IOException, ParseException {//se esta cargando mal en ram
         //Trae archivo excel
@@ -223,6 +227,11 @@ public class Cargador {
         return sismos;
     }
 
+    /**
+     * Crea un excel con las personas en caso de que este no exista
+     * @return booleano para verificar la creacion del excel
+     */
+
     public static boolean crearExcelPersonas() {
         String fileName = "Excel/baseDatosPersonas.xlsx";
         XSSFWorkbook workbook = new XSSFWorkbook();
@@ -248,6 +257,11 @@ public class Cargador {
         }
         return true;
     }
+
+    /**
+     * Se encarga de cargar el excel con los datos de las personas a una lista en RAM
+     * @return Una lista con las personas cargadas
+     */
 
     public static ArrayList<Persona> cargarExcelPersonas() throws IOException, ParseException {
         //Trae archivo excel

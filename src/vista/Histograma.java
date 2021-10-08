@@ -17,6 +17,10 @@ import org.jfree.data.xy.IntervalXYDataset;
 import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RefineryUtilities;
 
+/**
+ * Objeto para generar un histograma
+ */
+
 public class Histograma extends ApplicationFrame {
     private controlador control;
     public Histograma(String title,controlador control) {

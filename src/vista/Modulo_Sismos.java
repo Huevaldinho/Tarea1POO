@@ -6,6 +6,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Interfaz con el menu de los sismos
+ */
+
 public class Modulo_Sismos extends JFrame {
     private JPanel sismosPanel;
     private JButton mostrarSismosButton;

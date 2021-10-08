@@ -12,6 +12,10 @@ import java.util.Locale;
 import control.controlador;
 import modelo.TOrigen;
 
+/**
+ * Interfaz para annadir un nuevo sismo
+ */
+
 public class Anadir_Sismo extends JFrame {
     private JPanel panel;
     private JTextField textoFecha;

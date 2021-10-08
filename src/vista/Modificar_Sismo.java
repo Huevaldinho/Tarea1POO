@@ -8,6 +8,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import control.controlador;
+
+/**
+ * Interfaz grafica para modificar sismos.
+ */
+
 public class Modificar_Sismo extends JFrame {
     private JPanel panel;
     private JComboBox comboBoxNuevaProvincia;
@@ -17,9 +22,6 @@ public class Modificar_Sismo extends JFrame {
     private controlador control;
 
     Modificar_Sismo() {    }
-    /**
-     * Interfaz grafica para modificar sismos.
-     */
     Modificar_Sismo(controlador control) {
         super("Modificar Sismo");
         setContentPane(panel);

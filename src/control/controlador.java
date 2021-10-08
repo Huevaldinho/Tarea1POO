@@ -20,6 +20,10 @@ import org.apache.poi.hpsf.Array;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * Modelo que se encarga de validar parametros e instanciar objetos
+ */
+
 public class controlador {
     private Cargador cargador = new Cargador();
     private BaseDatos BD;  // asociación comunicación entre el controlador y el admClientes
@@ -163,6 +167,12 @@ public class controlador {
             return false;
         }
     }
+
+    /**
+     * Se encarga de generar el reporte por provincias
+     * @return Un array con datos double
+     */
+
     public double[] reporteProvincias()throws IOException, ParseException {
         ArrayList<Sismo> sismos= BD.getSismos();
         int cantidadSismos=0;
@@ -182,6 +192,11 @@ public class controlador {
      * @return DefaultTableModel: Modelo de la tabla para la interfaz grafica.
      */
     public DefaultTableModel cargarSismosTabla(){return cargador.cargarClientes(BD.getSismos());}
+
+    /**
+     * Genera un reporte por tipo de origen de un sismo
+     * @return Un array con datos tipo double
+     */
 
     public double[] reporteTipoOrigen()throws IOException, ParseException {
         ArrayList<Sismo> sismos= BD.getSismos();
@@ -217,6 +232,16 @@ public class controlador {
         return datos;
 
     }
+
+    /**
+     * Envia la tabla con la clasificacion por magnitud de los sismos
+     * @param dtm Modelo por defecto de una tabla
+     * @param i Iterador
+     * @param opcion Clasificacion de la magnitud
+     * @param sismo Objeto para extraer datos
+     * @return Retorna la tabla con los nuevos datos
+     */
+
     public DefaultTableModel enviarTablaMagnitud (DefaultTableModel dtm,int i,int opcion,Sismo sismo){
         DateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
         DateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
@@ -268,6 +293,12 @@ public class controlador {
         dtm.setValueAt(sismo.getLocalizacionDescripcion(), i, 10);
         return dtm;
     }
+
+    /**
+     * Genera una tabla con los reportes por magnitud
+     * @return Retorna la tabla con todos los datos
+     */
+
     public DefaultTableModel reportePorMagnitud(){
         ArrayList<Sismo> sismos= BD.getSismos();
 
@@ -305,6 +336,13 @@ public class controlador {
         }
         return dtm;
     }
+
+    /**
+     * Crea una tabla con los sismos de un rango de fechas
+     * @param fechaInicial Fecha inicial para filtrar
+     * @param fechaFinal Fecha final para filtrar
+     * @return Retorna la tabla con los sismos del rango de fechas establecidos
+     */
 
     public DefaultTableModel reporteFechas(Date fechaInicial, Date fechaFinal){
         ArrayList <Sismo> sismos = BD.getSismos();
@@ -371,6 +409,14 @@ public class controlador {
         }
         return dtm;
     }
+
+    /**
+     * Valida las fechas ingresadas por el usuario
+     * @param fechaInicial Fecha inicial ingresada por el usuario
+     * @param fechaFinal Fecha final ingresada por el usuario
+     * @return booleano para validar datos
+     */
+
     public boolean reporteFechasValidar(Date fechaInicial,Date fechaFinal){
         Date fechaActual = new Date(System.currentTimeMillis());
         if (fechaInicial.after(fechaActual)||fechaFinal.after(fechaActual)){
@@ -378,6 +424,12 @@ public class controlador {
         }
         return !fechaInicial.after(fechaFinal);
     }
+
+    /**
+     * Genera un reporte por mes en un determinado anno
+     * @param anno Anno ingresado por el usuario
+     * @return Retorna un array con datos de tipo double
+     */
 
     public double[] reportesPorMesEnUnAnno(Date anno){
         System.out.println("Esta en los reportes");

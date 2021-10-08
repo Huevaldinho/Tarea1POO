@@ -8,6 +8,10 @@ package modelo;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * Modelo de una persona con datos de contacto y provincias de interes
+ */
+
 public class Persona {
     //Atributos
     private String nombre;

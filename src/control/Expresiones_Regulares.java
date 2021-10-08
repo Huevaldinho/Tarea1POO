@@ -3,6 +3,10 @@ package control;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Modelo para llevar control de expresiones regulares
+ */
+
 public class Expresiones_Regulares {
     Expresiones_Regulares() {}
     /**
@@ -22,6 +26,13 @@ public class Expresiones_Regulares {
         }
 
     }
+
+    /**
+     * Verifica el correo electronico ingresado
+     * @param correoElectronico Parametro ingresado por el usuario
+     * @return Retorna un booleano para verificar el correo
+     */
+
     public static boolean verificarCorreoElectronico (String correoElectronico) {
         Pattern patronCorreoElectronico = Pattern.compile("[a-zA-Z0-9]+@{1}[a-zA-Z0-9]+(.com)");
 
@@ -35,6 +46,13 @@ public class Expresiones_Regulares {
             return false;
         }
     }
+
+    /**
+     * Verifica un numero de telefono
+     * @param numeroTelefono Numero de telefono ingresado por el usuario
+     * @return Retorna un booleano para verificar el numero de telefono
+     */
+
     public static boolean verificarNumeroTelefono (String numeroTelefono) {
         Pattern patronNumeroTelefono = Pattern.compile("^[0-9]{4}-{1}[0-9]{4}$");
         Matcher match = patronNumeroTelefono.matcher(numeroTelefono);

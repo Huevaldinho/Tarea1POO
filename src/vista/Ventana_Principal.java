@@ -23,8 +23,8 @@ import control.controlador;
 
 public class Ventana_Principal extends JFrame {
     private JPanel principalPanel;
-    private JButton móduloDeSismosButton;
-    private JButton añadirPersonaParaSerButton;
+    private JButton moduloDeSismosButton;
+    private JButton anadirPersonaParaSerButton;
     private JButton reportesDeSismosButton;
     private JButton sobreNosotrosButton;
     private static controlador control;
@@ -38,7 +38,7 @@ public class Ventana_Principal extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
 
-        móduloDeSismosButton.addActionListener(new ActionListener() {
+        moduloDeSismosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame panelModuloSismos = new Modulo_Sismos(control);
@@ -53,7 +53,7 @@ public class Ventana_Principal extends JFrame {
                 panelReporteSismos.setVisible(true);
             }
         });
-        añadirPersonaParaSerButton.addActionListener(new ActionListener() {
+        anadirPersonaParaSerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame panelAnadirPersona = new Anadir_Persona(control);

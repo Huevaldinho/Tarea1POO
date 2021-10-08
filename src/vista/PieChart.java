@@ -14,6 +14,10 @@ import org.jfree.ui.RefineryUtilities;
 import java.io.IOException;
 import java.text.ParseException;
 
+/**
+ * Objeto para generar un grafico de pastel
+ */
+
 public class PieChart extends ApplicationFrame {
     private controlador control;
     public PieChart( String title,controlador control ) {

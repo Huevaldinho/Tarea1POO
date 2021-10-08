@@ -5,6 +5,10 @@ import control.controlador;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * Interfaz grafica para mostrar los sismos registrados.
+ */
+
 public class Mostrar_Sismos extends JFrame {
     private JPanel panel;
     private JTable tablaSismos;
@@ -15,9 +19,6 @@ public class Mostrar_Sismos extends JFrame {
     private  controlador  control;
 
     Mostrar_Sismos() {    }
-    /**
-     * Interfaz grafica para mostrar los sismos registrados.
-     */
     Mostrar_Sismos(controlador control) {
         super("Mostrar Sismos");
         setContentPane(panel);

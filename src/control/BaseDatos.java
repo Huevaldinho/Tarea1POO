@@ -25,6 +25,10 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * Modelo de una base de datos que almacena en RAM los sismos y las personas
+ */
+
 public class BaseDatos {
     //Atributos
 
@@ -266,6 +270,12 @@ public class BaseDatos {
         return true;
     }
 
+    /**
+     * Consulta una persona en la lista de personas
+     * @param nombrePersona nombre por el cual se va a buscar a la persona
+     * @return se retorna el objeto de la persona encontrada
+     */
+
     public Persona consultarPersona(String nombrePersona){
         Persona aBuscar = new Persona();
         aBuscar.setNombre(nombrePersona);
@@ -275,6 +285,13 @@ public class BaseDatos {
         }
         return null;
     }
+
+    /**
+     * Modifica una persona
+     * @param nuevaPersona nuevo objeto de persona para modificar
+     * @return un booleano para verificar si se realizo exitosamente
+     */
+
     public boolean modificarPersona(Persona nuevaPersona){
         for (int i = 0 ; i<personas.size() ; i++) {
             Persona personaEnCiclo=personas.get(i);
@@ -285,6 +302,13 @@ public class BaseDatos {
         }
         return false;
     }
+
+    /**
+     * Elimina una persona
+     * @param personaEliminar objeto de persona a eliminar
+     * @return booleano verificar la eliminacion
+     */
+
     public boolean eliminarPersona (Persona personaEliminar){
         return personas.remove(personaEliminar);
     }

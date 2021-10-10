@@ -19,6 +19,7 @@ public class Modificar_Sismo extends JFrame {
     private JTextField textoNuevaLocalizacion;
     private JTextField txtInstanteExacto;
     private JButton btnModificar;
+    private JTextField textoFecha;
     private controlador control;
 
     Modificar_Sismo() {    }
@@ -47,11 +48,13 @@ public class Modificar_Sismo extends JFrame {
      * @return true si todos los datos tienen formato valida, false de lo contrario.
      */
     public boolean extraerDatosModificar() throws IOException {
+        Date fecha;
         Date hora=null;
         String nuevaLocalizacion;
         int provincia;
         try {
-            hora = new SimpleDateFormat("hh:mm:ss").parse(txtInstanteExacto.getText());
+            fecha = new SimpleDateFormat("dd/MM/yyyy").parse(textoFecha.getText());
+            hora = new SimpleDateFormat("HH:mm:ss").parse(txtInstanteExacto.getText());
             nuevaLocalizacion = textoNuevaLocalizacion.getText();
             provincia = comboBoxNuevaProvincia.getSelectedIndex()+1;
         } catch (ParseException e) {
@@ -61,6 +64,6 @@ public class Modificar_Sismo extends JFrame {
             return false;
         }
         //Retorna si pudo modificarlo o no
-        return control.modificarSismo(hora,provincia,nuevaLocalizacion);
+        return control.modificarSismo(fecha, hora,provincia,nuevaLocalizacion);
     }
 }

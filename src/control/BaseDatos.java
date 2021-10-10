@@ -147,10 +147,11 @@ public class BaseDatos {
      * @param nuevaLocalizacion: Nueva localizacion.
      * @return true modifico el sismo, false de lo contrario.
      */
-    public boolean modificarSismo(Date nuevoInstante, int nuevaProvincia, String nuevaLocalizacion) throws IOException {
+    public boolean modificarSismo(Date fecha, Date nuevoInstante, int nuevaProvincia, String nuevaLocalizacion) throws IOException {
         if (sismos.isEmpty())
                 return false;
         DateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
+        DateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
         System.out.println("Hay "+sismos.size()+" sismos registrados.");
         int index=0;
         boolean encontro=false;

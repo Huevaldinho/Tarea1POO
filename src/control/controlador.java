@@ -91,8 +91,8 @@ public class controlador {
      * @param localizacion: Localizacion: Nueva descripcion de la localizacion.
      * @return boolean: true si se modifico, false de lo contrario.
      */
-    public boolean modificarSismo(Date hora, int provinciaNueva, String localizacion) throws IOException {
-        return BD.modificarSismo(hora,provinciaNueva,localizacion);
+    public boolean modificarSismo(Date fecha, Date hora, int provinciaNueva, String localizacion) throws IOException {
+        return BD.modificarSismo(fecha, hora,provinciaNueva,localizacion);
     }
 
     /**

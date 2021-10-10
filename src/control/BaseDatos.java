@@ -157,8 +157,7 @@ public class BaseDatos {
         boolean encontro=false;
         for (Sismo actual : sismos){//Revisa si ya está registrado
             index++;
-            if (formatoHora.format(actual.getInstanteExacto()).equals(formatoHora.format(nuevoInstante))){
-                System.out.println("Son iguales jaja xd");
+            if (formatoHora.format(actual.getInstanteExacto()).equals(formatoHora.format(nuevoInstante)) && formatoFecha.format(actual.getFecha()).equals(formatoFecha.format(fecha))){
                 actual.setProvincia(nuevaProvincia);
                 actual.setLocalizacionDescripcion(nuevaLocalizacion);
                 encontro=true;

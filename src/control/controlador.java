@@ -227,6 +227,7 @@ public class controlador {
                 }
             }
         }
+        System.out.println(di);
         double datos[]=new double[5];
         datos[0]=(sb*100)/cantidadSismos;datos[1]=(cp*100)/cantidadSismos;datos[2]=(tpf*100)/cantidadSismos;datos[3]=(ip*100)/cantidadSismos;datos[4]=(di*100)/cantidadSismos;
         return datos;

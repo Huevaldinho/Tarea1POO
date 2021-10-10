@@ -3,7 +3,8 @@ package vista;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
-import javax.swing.JPanel;
+import javax.swing.*;
+
 import control.controlador;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -21,7 +22,7 @@ import org.jfree.ui.RefineryUtilities;
  * Objeto para generar un histograma
  */
 
-public class Histograma extends ApplicationFrame {
+public class Histograma extends JFrame {
     private controlador control;
     public Histograma(String title,controlador control) {
         super(title);

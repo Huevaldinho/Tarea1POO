@@ -36,7 +36,7 @@ public class Modificar_Sismo extends JFrame {
                     if (extraerDatosModificar())
                         JOptionPane.showMessageDialog(null,"Se ha modificado el sismo!");
                     else
-                        JOptionPane.showMessageDialog(null,"Ha ocurrido un error");
+                        JOptionPane.showMessageDialog(null,"Ingrese datos válidos");
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }

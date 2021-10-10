@@ -18,7 +18,7 @@ import java.text.ParseException;
  * Objeto para generar un grafico de pastel
  */
 
-public class PieChart extends ApplicationFrame {
+public class PieChart extends JFrame {
     private controlador control;
     public PieChart( String title,controlador control ) {
         super( title );

@@ -34,7 +34,6 @@ public class Solicitud_Anno extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (obtenerAnno()){
                     JFrame panelReporteFechas = new Reporte_Mes(control,annoConvertido);
-                    panelReporteFechas.setVisible(true);
                 }else{
                     JOptionPane.showMessageDialog(null,"Ingrese un año válida");
                 }

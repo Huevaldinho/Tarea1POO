@@ -15,6 +15,7 @@ public class Reporte_Mes extends JFrame{
     private controlador control;
 
     Reporte_Mes(controlador control, Date annoConvertido) {
+        this.control = control;
         double[] info=control.reportesPorMesEnUnAnno(annoConvertido);
         GraficoBarras chart = new GraficoBarras("Reporte de Sismos por Mes",
                 "Sismos por mes en un año",annoConvertido,info);

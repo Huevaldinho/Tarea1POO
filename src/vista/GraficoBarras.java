@@ -17,7 +17,7 @@ import java.util.Date;
  * Objeto para generar un grafico de barras
  */
 
-public class GraficoBarras extends ApplicationFrame {
+public class GraficoBarras extends JFrame {
     private controlador controlador;
     public GraficoBarras( String applicationTitle , String chartTitle , Date anno,double[]info) {
     super( applicationTitle );

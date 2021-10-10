@@ -9,6 +9,8 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RefineryUtilities;
 import control.controlador;
+
+import javax.swing.*;
 import java.util.Date;
 
 /**

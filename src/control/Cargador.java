@@ -29,8 +29,6 @@ import java.util.Iterator;
 
 public class Cargador {
     static XSSFRow row;
-    private static ArrayList<Sismo> sismos = new ArrayList();
-    private static ArrayList<Persona> personas = new ArrayList();
     /**
      * Crear el modelo de la tabla para mostrar sismos en la interfaz grafica.
      * @param lista: Lista de sismos que se mostraran en la interfaz.
@@ -125,6 +123,7 @@ public class Cargador {
      */
     public static ArrayList<Sismo> cargarExcelSismos() throws IOException, ParseException {//se esta cargando mal en ram
         //Trae archivo excel
+        ArrayList<Sismo> sismos = new ArrayList(); // array para guardar sismos
         FileInputStream fis = null;
         try {
             fis = new FileInputStream(new File("Excel/baseDatosSismos.xlsx"));
@@ -265,6 +264,7 @@ public class Cargador {
 
     public static ArrayList<Persona> cargarExcelPersonas() throws IOException, ParseException {
         //Trae archivo excel
+        ArrayList<Persona> personas = new ArrayList(); // array para guardar personas
         FileInputStream fis = null;
         try {
             fis = new FileInputStream(new File("Excel/baseDatosPersonas.xlsx"));
